@@ -26,6 +26,7 @@ export const SITE = {
 export const CF_IMAGES = {
   accountHash: '-sPAUAWeA405NiWJ0SNIQA',
   heroId: 'c0e2c472-d1d1-467c-b5ff-f6ca4e0e7400',
+  faviconId: '20aae291-1f97-4771-466d-a237f15cd600',
   /** Named variant that is publicly allowed on this account */
   variant: 'public',
 } as const;
@@ -44,5 +45,6 @@ export function cfImage(
 }
 
 export const HERO_IMAGE = cfImage(CF_IMAGES.heroId);
+export const FAVICON_IMAGE = cfImage(CF_IMAGES.faviconId);
 /** Same public variant — flexible OG crop URLs are blocked (403) on this account */
 export const OG_IMAGE = HERO_IMAGE;

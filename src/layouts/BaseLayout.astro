@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { SITE, HERO_IMAGE, OG_IMAGE } from '../lib/site';
+import { SITE, HERO_IMAGE, OG_IMAGE, FAVICON_IMAGE } from '../lib/site';
 
 interface Props {
   title?: string;
@@ -33,8 +33,9 @@ const schemas = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
     <meta name="theme-color" content="#07080c" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonical} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href={FAVICON_IMAGE} type="image/png" />
+    <link rel="apple-touch-icon" href={FAVICON_IMAGE} />
+    <link rel="shortcut icon" href={FAVICON_IMAGE} />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <!-- Open Graph -->
