@@ -1,32 +1,23 @@
 ---
-import { HERO_IMAGE, SITE, cfImage, CF_IMAGES } from '../lib/site';
-
-const heroSrcSet = [
-  `${cfImage(CF_IMAGES.heroId, { width: 640, fit: 'cover', format: 'auto', quality: 80 })} 640w`,
-  `${cfImage(CF_IMAGES.heroId, { width: 960, fit: 'cover', format: 'auto', quality: 82 })} 960w`,
-  `${cfImage(CF_IMAGES.heroId, { width: 1440, fit: 'cover', format: 'auto', quality: 85 })} 1440w`,
-  `${cfImage(CF_IMAGES.heroId, { width: 1920, fit: 'cover', format: 'auto', quality: 85 })} 1920w`,
-].join(', ');
+import { HERO_IMAGE, SITE } from '../lib/site';
 ---
 
 <header class="relative min-h-[100svh] flex flex-col justify-end overflow-hidden pt-16 sm:pt-[4.25rem]">
   <div class="absolute inset-0" aria-hidden="true">
     <img
       src={HERO_IMAGE}
-      srcset={heroSrcSet}
-      sizes="100vw"
       alt=""
       width="1920"
       height="1080"
-      class="h-full w-full object-cover object-center scale-105 animate-fade-in"
+      class="absolute inset-0 h-full w-full object-cover object-center scale-105 animate-fade-in"
       fetchpriority="high"
       decoding="async"
     />
     <div
-      class="absolute inset-0 bg-gradient-to-t from-ink via-ink/75 to-ink/35"
+      class="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/20"
     ></div>
     <div
-      class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgb(7_8_12/0.55)_100%)]"
+      class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgb(7_8_12/0.35)_100%)]"
     ></div>
   </div>
 
