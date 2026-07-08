@@ -1,0 +1,12 @@
+# Workers Static Assets — assets-only (no Worker script / no adapter)
+name = "selfdriving-monster-v1"
+compatibility_date = "2026-07-08"
+
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"
+html_handling = "auto-trailing-slash"
+
+# Custom domain: selfdriving.monster (configure route/custom domain in dashboard or:
+# routes = [{ pattern = "selfdriving.monster/*", custom_domain = true }]
+)

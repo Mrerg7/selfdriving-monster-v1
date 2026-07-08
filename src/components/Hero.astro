@@ -1,0 +1,66 @@
+---
+import { HERO_IMAGE, SITE, cfImage, CF_IMAGES } from '../lib/site';
+
+const heroSrcSet = [
+  `${cfImage(CF_IMAGES.heroId, { width: 640, fit: 'cover', format: 'auto', quality: 80 })} 640w`,
+  `${cfImage(CF_IMAGES.heroId, { width: 960, fit: 'cover', format: 'auto', quality: 82 })} 960w`,
+  `${cfImage(CF_IMAGES.heroId, { width: 1440, fit: 'cover', format: 'auto', quality: 85 })} 1440w`,
+  `${cfImage(CF_IMAGES.heroId, { width: 1920, fit: 'cover', format: 'auto', quality: 85 })} 1920w`,
+].join(', ');
+---
+
+<header class="relative min-h-[100svh] flex flex-col justify-end overflow-hidden pt-16 sm:pt-[4.25rem]">
+  <div class="absolute inset-0" aria-hidden="true">
+    <img
+      src={HERO_IMAGE}
+      srcset={heroSrcSet}
+      sizes="100vw"
+      alt=""
+      width="1920"
+      height="1080"
+      class="h-full w-full object-cover object-center scale-105 animate-fade-in"
+      fetchpriority="high"
+      decoding="async"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-ink via-ink/75 to-ink/35"
+    ></div>
+    <div
+      class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_20%,rgb(7_8_12/0.55)_100%)]"
+    ></div>
+  </div>
+
+  <div class="relative z-10 mx-auto w-full max-w-screen-2xl px-4 sm:px-6 lg:px-8 pb-14 sm:pb-20 pt-24">
+    <p class="font-display text-2xl sm:text-3xl md:text-4xl tracking-tighter animate-fade-up">
+      selfdriving<span class="text-ember">.monster</span>
+    </p>
+
+    <h1
+      class="mt-4 max-w-4xl text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tighter leading-[0.95] animate-fade-up delay-1"
+    >
+      The machines are already driving.
+      <span class="monster-gradient block mt-1">When do we stop?</span>
+    </h1>
+
+    <p class="mt-5 max-w-xl text-base sm:text-lg text-zinc-300/95 animate-fade-up delay-2">
+      A clear-eyed, data-backed guide to self-driving vehicles — Tesla FSD, Cybercab, Waymo, and why
+      industry leads the autonomy race. Data as of {SITE.dataAsOf}.
+    </p>
+
+    <div class="mt-8 flex flex-wrap items-center gap-3 sm:gap-4 animate-fade-up delay-3">
+      <a
+        href="#tesla"
+        class="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-white px-6 sm:px-8 text-ink font-semibold text-sm sm:text-base hover:bg-zinc-100 active:scale-[0.985] transition shadow-xl shadow-black/40"
+      >
+        Explore Tesla’s progress
+        <span aria-hidden="true">→</span>
+      </a>
+      <a
+        href="#acquire"
+        class="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-white/25 bg-white/5 px-6 sm:px-7 font-semibold text-sm sm:text-base hover:bg-white/10 transition backdrop-blur-sm"
+      >
+        Acquire this domain
+      </a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+
+const entries = (await getCollection('timeline')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<section id="timeline" class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 pb-16">
+  <div class="max-w-2xl mb-10">
+    <div class="text-signal text-xs tracking-[0.2em] font-semibold mb-2">Realistic Outlook</div>
+    <h2 class="section-header tracking-tighter">When and how will we stop driving?</h2>
+    <p class="text-base sm:text-lg text-zinc-400 mt-2">
+      Gradual, uneven, and incomplete — like horses to cars. We won’t flip a switch.
+    </p>
+  </div>
+
+  <div class="relative pl-8 border-l border-white/20 space-y-10 sm:space-y-12 max-w-3xl">
+    {
+      await Promise.all(
+        entries.map(async (entry) => {
+          const { Content } = await render(entry);
+          return (
+            <div class="relative">
+              <div class="timeline-dot absolute -left-[2.05rem] top-1.5 rounded-full" aria-hidden="true" />
+              <div class="font-mono text-xs text-signal mb-1">{entry.data.period}</div>
+              <div class="font-semibold text-lg sm:text-xl tracking-tight">{entry.data.title}</div>
+              <div class="text-sm mt-1.5 text-zinc-400 leading-relaxed">
+                <Content />
+              </div>
+            </div>
+          );
+        }),
+      )
+    }
+  </div>
+
+  <div class="mt-12 p-6 sm:p-8 rounded-2xl bg-ink-soft border border-white/10 max-w-3xl">
+    <div class="uppercase text-xs tracking-widest mb-3 text-zinc-400">Key Insight</div>
+    <p class="text-base sm:text-lg leading-relaxed">
+      “Stopping driving” misframes passenger cars. The shift is from
+      <span class="font-medium text-white">ownership + manual</span> to
+      <span class="font-medium text-white">on-demand mobility</span> for most trips. Heavy machinery
+      already proves the model: autonomy wins where jobs are repetitive, dangerous, and costly to staff.
+    </p>
+  </div>
+</section>

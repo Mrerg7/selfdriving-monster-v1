@@ -1,0 +1,105 @@
+---
+import { SITE } from '../lib/site';
+
+const mailSubject = encodeURIComponent('Inquiry: selfdriving.monster domain acquisition');
+const mailBody = encodeURIComponent(
+  'Hello,\n\nI am interested in acquiring the selfdriving.monster domain. Please share availability and terms.\n\nThanks,',
+);
+const mailto = `mailto:${SITE.acquisitionEmail}?subject=${mailSubject}&body=${mailBody}`;
+---
+
+<footer class="border-t border-white/10 bg-ink-elevated" role="contentinfo">
+  <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+    <section
+      id="acquire"
+      class="cta-acquire relative overflow-hidden rounded-3xl border border-white/12 px-6 py-10 sm:px-10 sm:py-12"
+      aria-labelledby="acquire-heading"
+    >
+      <div
+        class="pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-signal/20 blur-3xl"
+        aria-hidden="true"
+      ></div>
+      <div
+        class="pointer-events-none absolute -bottom-28 -left-10 h-64 w-64 rounded-full bg-ember/15 blur-3xl"
+        aria-hidden="true"
+      ></div>
+
+      <div class="relative grid lg:grid-cols-[1.4fr_1fr] gap-8 lg:gap-12 items-center">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">
+            Premium domain · Available for acquisition
+          </p>
+          <h2 id="acquire-heading" class="mt-3 font-display text-3xl sm:text-4xl tracking-tighter">
+            selfdriving<span class="text-ember">.monster</span>
+          </h2>
+          <p class="mt-4 max-w-xl text-sm sm:text-[15px] text-zinc-300 leading-relaxed">
+            Secure a category-defining digital asset for the autonomy era. Ideal for media brands,
+            mobility platforms, investor decks, and category ownership in self-driving.
+          </p>
+          <ul class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs text-zinc-400">
+            <li class="flex items-center gap-2"><span class="text-pulse" aria-hidden="true">●</span> Direct sale inquiry</li>
+            <li class="flex items-center gap-2"><span class="text-pulse" aria-hidden="true">●</span> Serious buyers only</li>
+            <li class="flex items-center gap-2"><span class="text-pulse" aria-hidden="true">●</span> Worldwide</li>
+          </ul>
+        </div>
+
+        <div class="rounded-2xl border border-white/10 bg-ink/55 p-5 sm:p-6 backdrop-blur-sm">
+          <p class="text-xs uppercase tracking-[0.18em] text-zinc-500 mb-2">Acquisition desk</p>
+          <a
+            href={mailto}
+            class="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3.5 text-ink font-semibold text-sm sm:text-base hover:bg-zinc-100 active:scale-[0.985] transition"
+          >
+            Contact {SITE.acquisitionEmail}
+            <span class="transition group-hover:translate-x-0.5" aria-hidden="true">→</span>
+          </a>
+          <p class="mt-3 text-center text-[11px] text-zinc-500">
+            Prefer email?
+            <a class="text-zinc-300 underline underline-offset-2 hover:text-white" href={mailto}>
+              {SITE.acquisitionEmail}
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-[1fr_auto] md:items-start">
+      <div>
+        <p class="font-display text-xl tracking-tighter">
+          selfdriving<span class="text-ember">.monster</span>
+        </p>
+        <p class="mt-2 max-w-xl text-sm text-zinc-500">
+          A living resource on autonomous vehicles. Technology and rules evolve quickly. Data as of{' '}
+          {SITE.dataAsOf}.
+        </p>
+      </div>
+      <nav class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-zinc-400" aria-label="Footer">
+        <a href="#understanding" class="hover:text-white transition">Understanding</a>
+        <a href="#tesla" class="hover:text-white transition">Tesla</a>
+        <a href="#industrial" class="hover:text-white transition">Industrial</a>
+        <a href="#timeline" class="hover:text-white transition">Timeline</a>
+        <a href="#faq" class="hover:text-white transition">FAQ</a>
+        <a href="#acquire" class="hover:text-white transition">Acquire</a>
+      </nav>
+    </div>
+
+    <div class="mt-10 pt-8 border-t border-white/10 space-y-4">
+      <p class="text-[11px] sm:text-xs text-zinc-500 leading-relaxed max-w-4xl">
+        This website is for demonstration and informational purposes only. It does not constitute an
+        offer of services, a commitment to deploy, or a guarantee of outcomes. All statistics,
+        projections, and references to specific technologies are based on publicly available information
+        as of the date shown and are subject to change.
+      </p>
+      <p class="text-[10px] text-zinc-600 leading-relaxed max-w-3xl">
+        Compiled from Tesla disclosures (2026), Waymo reports, Komatsu milestones, EPA Cybercab filings,
+        SAE standards. Timelines are informed estimates and subject to change. Not investment, legal, or
+        safety advice.
+      </p>
+      <p class="text-[11px] text-zinc-600">
+        © {new Date().getFullYear()} {SITE.name}. Domain inquiries:
+        <a class="text-zinc-400 hover:text-white underline underline-offset-2" href={mailto}>
+          {SITE.acquisitionEmail}
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
