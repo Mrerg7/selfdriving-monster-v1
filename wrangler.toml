@@ -7,6 +7,8 @@ directory = "./dist"
 not_found_handling = "404-page"
 html_handling = "auto-trailing-slash"
 
-# Custom domain: selfdriving.monster (configure route/custom domain in dashboard or:
-# routes = [{ pattern = "selfdriving.monster/*", custom_domain = true }]
-)
+# Custom domain: selfdriving.monster
+# Configure in the Cloudflare dashboard, or uncomment:
+# [[routes]]
+# pattern = "selfdriving.monster/*"
+# custom_domain = true
