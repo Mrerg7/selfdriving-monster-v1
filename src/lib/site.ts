@@ -3,7 +3,7 @@ export const SITE = {
   title: 'selfdriving.monster — The Future of Driving, Explained',
   description:
     'The premier source for accurate, up-to-date information on self-driving vehicles. Tesla FSD, Cybercab Robotaxi, Waymo, industrial autonomy in mining & warehouses, and realistic timelines for when we stop driving. Data as of July 2026.',
-  url: 'https://selfdriving.monster',
+  url: 'https://selfdriving.monster/',
   locale: 'en_US',
   twitter: '@selfdrivingmonster',
   acquisitionEmail: 'sales@desertrich.com',

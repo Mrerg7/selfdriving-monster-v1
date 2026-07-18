@@ -1,10 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../lib/site';
 
 const title = 'Page not found — selfdriving.monster';
 ---
 
-<BaseLayout title={title} description="The page you requested could not be found.">
+<BaseLayout
+  title={title}
+  description="The page you requested could not be found."
+  canonical={`${SITE.url}404/`}
+  robots="noindex, follow">
   <main class="min-h-dvh flex items-center justify-center px-6">
     <div class="text-center max-w-md">
       <p class="font-display text-2xl tracking-tighter">
