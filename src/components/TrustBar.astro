@@ -16,7 +16,7 @@ const stats = (await getCollection('stats')).sort((a, b) => a.data.order - b.dat
                 <span class="text-sm sm:text-base font-normal text-zinc-500"> {stat.data.unit}</span>
               )}
             </div>
-            <div class="text-[11px] sm:text-xs text-zinc-500 mt-1.5 tracking-wide leading-snug">
+            <div class="text-xs text-zinc-500 mt-1.5 tracking-wide leading-snug">
               {stat.data.label}
             </div>
           </div>

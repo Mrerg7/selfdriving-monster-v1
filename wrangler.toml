@@ -1,13 +1,17 @@
-# Workers Static Assets — assets-only (no Worker script / no adapter)
+# Workers Static Assets + thin Worker for canonical host redirects (www → apex, http → https)
 name = "selfdriving-monster-v1"
+main = "src/worker.ts"
 compatibility_date = "2026-07-08"
 
 [assets]
 directory = "./dist"
+binding = "ASSETS"
 not_found_handling = "404-page"
 html_handling = "auto-trailing-slash"
+# Required so Host-based redirects run before static HTML is served for /
+run_worker_first = true
 
-# Custom domain: selfdriving.monster
+# Custom domain: selfdriving.monster (+ www for redirect)
 # Configure in the Cloudflare dashboard, or uncomment:
 # [[routes]]
 # pattern = "selfdriving.monster/*"

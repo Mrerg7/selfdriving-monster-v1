@@ -14,9 +14,12 @@ import { getCollection } from 'astro:content';
 
 const faqs = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.order);
 
+const websiteId = `${SITE.url}#website`;
+
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': websiteId,
   name: SITE.name,
   url: SITE.url,
   description: SITE.description,
@@ -44,7 +47,7 @@ const webPageSchema = {
   name: SITE.title,
   description: SITE.description,
   url: SITE.url,
-  isPartOf: { '@id': `${SITE.url}/#website` },
+  isPartOf: { '@id': websiteId },
   primaryImageOfPage: {
     '@type': 'ImageObject',
     url: HERO_IMAGE,
