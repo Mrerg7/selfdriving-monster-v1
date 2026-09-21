@@ -20,7 +20,13 @@ export default {
     if (isWww || isHttp) {
       url.protocol = 'https:';
       url.hostname = CANONICAL_HOST;
-      return Response.redirect(url.toString(), 301);
+      return new Response(null, {
+        status: 301,
+        headers: {
+          Location: url.toString(),
+          'Cache-Control': 'public, max-age=86400',
+        },
+      });
     }
 
     return env.ASSETS.fetch(request);
