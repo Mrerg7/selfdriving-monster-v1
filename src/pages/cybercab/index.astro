@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AcquireCTA from '../../components/AcquireCTA.astro';
+import StickyMobileCTA from '../../components/StickyMobileCTA.astro';
+import { SITE, FAVICON_IMAGE } from '../../lib/site';
+
+const title = 'Tesla Cybercab — Specs, Production & Robotaxi Status | selfdriving.monster';
+const description =
+  'Tesla Cybercab deep dive: ~165 Wh/mi efficiency, ~48 kWh pack, no steering wheel, Giga Texas production ramp, and how it fits the unsupervised robotaxi future. Data as of September 2026.';
+const canonical = `${SITE.url}cybercab/`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Tesla Cybercab: Purpose-Built Robotaxi',
+  description,
+  url: canonical,
+  dateModified: SITE.dateModified,
+  datePublished: '2026-07-08',
+  author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.name,
+    logo: { '@type': 'ImageObject', url: FAVICON_IMAGE },
+  },
+  mainEntityOfPage: canonical,
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Cybercab', item: canonical },
+  ],
+};
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'Tesla Cybercab',
+  description: 'Purpose-built Tesla robotaxi with no steering wheel or pedals.',
+  brand: { '@type': 'Brand', name: 'Tesla' },
+  category: 'Autonomous vehicle',
+};
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} type="article" jsonLd={[articleSchema, breadcrumbSchema, productSchema]}>
+  <Nav />
+  <main id="main" class="pt-24 sm:pt-28 pb-16">
+    <article class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Cybercab' }]} />
+
+      <p class="uppercase tracking-[0.2em] text-xs text-ember font-semibold mb-3">Cybercab · Robotaxi</p>
+      <h1 class="font-display text-4xl sm:text-5xl font-bold tracking-tighter leading-[1.05]">
+        Cybercab: the purpose-built Tesla robotaxi
+      </h1>
+      <p class="mt-4 text-lg text-zinc-400 leading-relaxed">
+        No steering wheel. No pedals. Built for unsupervised miles at a target unit cost under $30k —
+        with record efficiency near 165 Wh/mi. Production ramping at Giga Texas.
+      </p>
+
+      <dl class="mt-10 grid grid-cols-2 gap-4 text-sm">
+        <div class="rounded-2xl border border-white/10 bg-ink-soft p-4">
+          <dt class="text-xs text-zinc-500">Curb weight</dt>
+          <dd class="mt-1 font-semibold text-white font-mono">3,113 lb</dd>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-ink-soft p-4">
+          <dt class="text-xs text-zinc-500">Battery</dt>
+          <dd class="mt-1 font-semibold text-white font-mono">~48 kWh</dd>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-ink-soft p-4">
+          <dt class="text-xs text-zinc-500">Powertrain</dt>
+          <dd class="mt-1 font-semibold text-white font-mono">FWD · 219 hp</dd>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-ink-soft p-4">
+          <dt class="text-xs text-zinc-500">Efficiency</dt>
+          <dd class="mt-1 font-semibold text-pulse font-mono">~165 Wh/mi</dd>
+        </div>
+      </dl>
+
+      <div class="mt-10 space-y-8 text-[15px] sm:text-base text-zinc-300 leading-relaxed">
+        <section>
+          <h2 class="font-display text-2xl tracking-tight text-white mb-3">Why Cybercab matters</h2>
+          <p>
+            Consumer FSD proves the software. Cybercab productizes the economics: denser seating for
+            passengers, inductive charging, and a chassis that never needed a driver’s cockpit. That is
+            how robotaxi margins work at fleet scale — and why Tesla is building a dedicated vehicle
+            instead of forever converting Model Ys.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl tracking-tight text-white mb-3">Production status ({SITE.dataAsOf})</h2>
+          <p>
+            First units began in February 2026. Volume ramp is underway at Giga Texas. Meanwhile, Tesla
+            Robotaxi service runs Model Y vehicles in geofenced U.S. cities — the operational rehearsal
+            for unsupervised Cybercab fleets.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl tracking-tight text-white mb-3">Design highlights</h2>
+          <ul class="space-y-2">
+            <li class="flex gap-2"><span class="text-pulse" aria-hidden="true">✓</span> No steering wheel or pedals</li>
+            <li class="flex gap-2"><span class="text-pulse" aria-hidden="true">✓</span> Wireless inductive charging planned</li>
+            <li class="flex gap-2"><span class="text-pulse" aria-hidden="true">✓</span> Self-certification path for FMVSS</li>
+            <li class="flex gap-2"><span class="text-pulse" aria-hidden="true">✓</span> Target unit cost under $30k</li>
+          </ul>
+          <p class="mt-4">
+            Related:
+            <a class="text-signal hover:text-white underline underline-offset-2" href="/tesla-fsd/">FSD software stack</a>
+            ·
+            <a class="text-signal hover:text-white underline underline-offset-2" href="/why-tesla/">Why Tesla leads</a>
+            ·
+            <a class="text-signal hover:text-white underline underline-offset-2" href="/#timeline">Autonomy timeline</a>
+          </p>
+        </section>
+      </div>
+    </article>
+
+    <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 mt-14">
+      <AcquireCTA id="acquire" />
+    </div>
+  </main>
+  <Footer />
+  <StickyMobileCTA />
+</BaseLayout>

@@ -5,16 +5,19 @@ import Hero from '../components/Hero.astro';
 import TrustBar from '../components/TrustBar.astro';
 import Understanding from '../components/Understanding.astro';
 import Tesla from '../components/Tesla.astro';
+import AcquireCTA from '../components/AcquireCTA.astro';
 import Industrial from '../components/Industrial.astro';
 import Timeline from '../components/Timeline.astro';
 import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
+import StickyMobileCTA from '../components/StickyMobileCTA.astro';
 import { SITE, HERO_IMAGE, OG_IMAGE, FAVICON_IMAGE } from '../lib/site';
 import { getCollection } from 'astro:content';
 
 const faqs = (await getCollection('faq')).sort((a, b) => a.data.order - b.data.order);
 
 const websiteId = `${SITE.url}#website`;
+const orgId = `${SITE.url}#organization`;
 
 const websiteSchema = {
   '@context': 'https://schema.org',
@@ -24,20 +27,11 @@ const websiteSchema = {
   url: SITE.url,
   description: SITE.description,
   inLanguage: 'en-US',
-  publisher: {
-    '@type': 'Organization',
-    name: SITE.name,
-    url: SITE.url,
-    logo: {
-      '@type': 'ImageObject',
-      url: FAVICON_IMAGE,
-    },
-    contactPoint: {
-      '@type': 'ContactPoint',
-      email: SITE.acquisitionEmail,
-      contactType: 'sales',
-      availableLanguage: 'English',
-    },
+  publisher: { '@id': orgId },
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${SITE.url}?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
   },
 };
 
@@ -52,8 +46,13 @@ const webPageSchema = {
     '@type': 'ImageObject',
     url: HERO_IMAGE,
   },
-  dateModified: '2026-07-08',
+  dateModified: SITE.dateModified,
   inLanguage: 'en-US',
+  about: [
+    { '@type': 'Thing', name: 'Tesla Full Self-Driving' },
+    { '@type': 'Thing', name: 'Cybercab' },
+    { '@type': 'Thing', name: 'Autonomous vehicles' },
+  ],
 };
 
 const faqSchema = {
@@ -72,25 +71,59 @@ const faqSchema = {
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': orgId,
   name: SITE.name,
   url: SITE.url,
   email: SITE.acquisitionEmail,
   description: SITE.description,
   sameAs: [],
   image: OG_IMAGE,
+  logo: {
+    '@type': 'ImageObject',
+    url: FAVICON_IMAGE,
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: SITE.acquisitionEmail,
+    contactType: 'sales',
+    availableLanguage: 'English',
+  },
+};
+
+const domainOfferSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'selfdriving.monster domain',
+  description:
+    'Premium category-defining domain for Tesla autonomy, robotaxi media, and self-driving brands. Available for acquisition.',
+  url: `${SITE.url}domain/`,
+  brand: { '@type': 'Brand', name: SITE.name },
+  offers: {
+    '@type': 'Offer',
+    url: `${SITE.url}domain/`,
+    availability: 'https://schema.org/InStock',
+    priceCurrency: 'USD',
+    seller: { '@id': orgId },
+  },
 };
 ---
 
-<BaseLayout jsonLd={[websiteSchema, webPageSchema, faqSchema, organizationSchema]}>
+<BaseLayout
+  jsonLd={[websiteSchema, webPageSchema, faqSchema, organizationSchema, domainOfferSchema]}
+>
   <Nav />
   <main id="main">
     <Hero />
     <TrustBar />
     <Understanding />
     <Tesla />
+    <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
+      <AcquireCTA id="acquire-mid" compact />
+    </div>
     <Industrial />
     <Timeline />
     <Faq />
   </main>
   <Footer />
+  <StickyMobileCTA />
 </BaseLayout>

@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AcquireCTA from '../../components/AcquireCTA.astro';
+import StickyMobileCTA from '../../components/StickyMobileCTA.astro';
+import { SITE, FAVICON_IMAGE } from '../../lib/site';
+
+const title = 'Why Tesla Leads Autonomy — Vision, Scale & Robotaxi | selfdriving.monster';
+const description =
+  'Why Tesla’s vision-only, fleet-scale approach to self-driving is the most ambitious — and most scalable — bet in autonomy. FSD data, Cybercab economics, and the path past geofenced robotaxis.';
+const canonical = `${SITE.url}why-tesla/`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Why Tesla Leads the Autonomy Race',
+  description,
+  url: canonical,
+  dateModified: SITE.dateModified,
+  datePublished: '2026-09-27',
+  author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.name,
+    logo: { '@type': 'ImageObject', url: FAVICON_IMAGE },
+  },
+  mainEntityOfPage: canonical,
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Why Tesla', item: canonical },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} type="article" jsonLd={[articleSchema, breadcrumbSchema]}>
+  <Nav />
+  <main id="main" class="pt-24 sm:pt-28 pb-16">
+    <article class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Why Tesla' }]} />
+
+      <p class="uppercase tracking-[0.2em] text-xs text-ember font-semibold mb-3">Thesis</p>
+      <h1 class="font-display text-4xl sm:text-5xl font-bold tracking-tighter leading-[1.05]">
+        Why Tesla’s approach wins autonomy
+      </h1>
+      <p class="mt-4 text-lg text-zinc-400 leading-relaxed">
+        Geofenced lidar fleets prove robotaxis can work on a map. Tesla is building a general driver that
+        works on any road the cameras can see — then manufacturing the cars that run it.
+      </p>
+
+      <div class="mt-10 space-y-8 text-[15px] sm:text-base text-zinc-300 leading-relaxed">
+        <section>
+          <h2 class="font-display text-2xl tracking-tight text-white mb-3">1. Vision generalizes</h2>
+          <p>
+            Humans drive with eyes. Tesla does too — with redundant cameras and neural nets that improve
+            continuously. Lidar and HD maps work brilliantly inside carefully maintained operational design
+            domains. Outside those bubbles, cost and coverage collapse. Vision is how you cover the planet.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl tracking-tight text-white mb-3">2. The fleet is the dataset</h2>
+          <p>
+            Millions of Teslas already on the road stream the edge cases that matter: construction zones,
+            emergency vehicles, weird weather, human chaos. That is not a research demo — it is a living
+            training set competitors cannot buy. Thirteen billion-plus FSD kilometers is the moat.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl tracking-tight text-white mb-3">3. Hardware + software + factories</h2>
+          <p>
+            Autonomy is not only software. Tesla designs the silicon, trains the models, ships OTA updates,
+            and builds Cybercab on its own lines. Vertical integration turns robotaxi from a pilot into a
+            product you can manufacture by the hundred thousand.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl tracking-tight text-white mb-3">4. Honest SAE framing</h2>
+          <p>
+            We do not pretend Level 2 is Level 4. Consumer FSD is supervised. Robotaxi ops and Cybercab
+            target Level 4 inside expanding domains. Clarity builds trust — and Tesla’s trajectory from
+            supervised to unsupervised is the clearest large-scale roadmap in the industry.
+          </p>
+          <p class="mt-4">
+            Keep reading:
+            <a class="text-signal hover:text-white underline underline-offset-2" href="/tesla-fsd/">FSD guide</a>
+            ·
+            <a class="text-signal hover:text-white underline underline-offset-2" href="/cybercab/">Cybercab</a>
+            ·
+            <a class="text-signal hover:text-white underline underline-offset-2" href="/#understanding">SAE levels</a>
+          </p>
+        </section>
+      </div>
+    </article>
+
+    <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 mt-14">
+      <AcquireCTA id="acquire" />
+    </div>
+  </main>
+  <Footer />
+  <StickyMobileCTA />
+</BaseLayout>

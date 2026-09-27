@@ -1,23 +1,26 @@
 export const SITE = {
   name: 'selfdriving.monster',
-  title: 'selfdriving.monster — The Future of Driving, Explained',
+  title: 'selfdriving.monster — Pro-Tesla Guide to Self-Driving & Cybercab',
   description:
-    'The premier source for accurate, up-to-date information on self-driving vehicles. Tesla FSD, Cybercab Robotaxi, Waymo, industrial autonomy in mining & warehouses, and realistic timelines for when we stop driving. Data as of July 2026.',
+    'A pro-Tesla guide to Full Self-Driving, Cybercab, and the robotaxi future. Clear SAE levels, real fleet data, and why Tesla’s vision-only approach scales. Premium domain available. Data as of September 2026.',
   url: 'https://selfdriving.monster/',
   locale: 'en_US',
   twitter: '@selfdrivingmonster',
   acquisitionEmail: 'sales@desertrich.com',
-  dataAsOf: 'July 2026',
+  dataAsOf: 'September 2026',
+  dateModified: '2026-09-27',
   keywords: [
-    'self-driving',
-    'autonomous vehicles',
     'Tesla FSD',
+    'Tesla Full Self-Driving',
     'Cybercab',
-    'Robotaxi',
-    'Waymo',
-    'autonomous mining',
-    'autonomous forklifts',
+    'Tesla Robotaxi',
+    'self-driving Tesla',
+    'autonomous vehicles',
+    'vision-only autonomy',
     'SAE levels',
+    'selfdriving.monster',
+    'domain for sale',
+    'Waymo vs Tesla',
     'future of driving',
   ],
 } as const;
@@ -48,3 +51,23 @@ export const HERO_IMAGE = cfImage(CF_IMAGES.heroId);
 export const FAVICON_IMAGE = cfImage(CF_IMAGES.faviconId);
 /** Same public variant — flexible OG crop URLs are blocked (403) on this account */
 export const OG_IMAGE = HERO_IMAGE;
+
+export function mailtoAcquire(subject?: string, body?: string): string {
+  const mailSubject = encodeURIComponent(
+    subject ?? 'Inquiry: selfdriving.monster domain acquisition',
+  );
+  const mailBody = encodeURIComponent(
+    body ??
+      'Hello,\n\nI am interested in acquiring the selfdriving.monster domain. Please share availability and terms.\n\nThanks,',
+  );
+  return `mailto:${SITE.acquisitionEmail}?subject=${mailSubject}&body=${mailBody}`;
+}
+
+export const NAV_LINKS = [
+  { href: '/#understanding', label: 'SAE Levels' },
+  { href: '/tesla-fsd/', label: 'Tesla FSD' },
+  { href: '/cybercab/', label: 'Cybercab' },
+  { href: '/why-tesla/', label: 'Why Tesla' },
+  { href: '/#timeline', label: 'Timeline' },
+  { href: '/#faq', label: 'FAQ' },
+] as const;

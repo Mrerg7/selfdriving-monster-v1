@@ -1,66 +1,11 @@
 ---
 import { SITE } from '../lib/site';
-
-const mailSubject = encodeURIComponent('Inquiry: selfdriving.monster domain acquisition');
-const mailBody = encodeURIComponent(
-  'Hello,\n\nI am interested in acquiring the selfdriving.monster domain. Please share availability and terms.\n\nThanks,',
-);
-const mailto = `mailto:${SITE.acquisitionEmail}?subject=${mailSubject}&body=${mailBody}`;
+import AcquireCTA from './AcquireCTA.astro';
 ---
 
 <footer class="border-t border-white/10 bg-ink-elevated" role="contentinfo">
   <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
-    <section
-      id="acquire"
-      class="cta-acquire relative overflow-hidden rounded-3xl border border-white/12 px-6 py-10 sm:px-10 sm:py-12"
-      aria-labelledby="acquire-heading"
-    >
-      <div
-        class="pointer-events-none absolute -top-24 -right-16 h-56 w-56 rounded-full bg-signal/20 blur-3xl"
-        aria-hidden="true"
-      ></div>
-      <div
-        class="pointer-events-none absolute -bottom-28 -left-10 h-64 w-64 rounded-full bg-ember/15 blur-3xl"
-        aria-hidden="true"
-      ></div>
-
-      <div class="relative grid lg:grid-cols-[1.4fr_1fr] gap-8 lg:gap-12 items-center">
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">
-            Premium domain · Available for acquisition
-          </p>
-          <h2 id="acquire-heading" class="mt-3 font-display text-3xl sm:text-4xl tracking-tighter">
-            selfdriving<span class="text-ember">.monster</span>
-          </h2>
-          <p class="mt-4 max-w-xl text-sm sm:text-[15px] text-zinc-300 leading-relaxed">
-            Secure a category-defining digital asset for the autonomy era. Ideal for media brands,
-            mobility platforms, investor decks, and category ownership in self-driving.
-          </p>
-          <ul class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-xs text-zinc-400">
-            <li class="flex items-center gap-2"><span class="text-pulse" aria-hidden="true">●</span> Direct sale inquiry</li>
-            <li class="flex items-center gap-2"><span class="text-pulse" aria-hidden="true">●</span> Serious buyers only</li>
-            <li class="flex items-center gap-2"><span class="text-pulse" aria-hidden="true">●</span> Worldwide</li>
-          </ul>
-        </div>
-
-        <div class="rounded-2xl border border-white/10 bg-ink/55 p-5 sm:p-6 backdrop-blur-sm">
-          <p class="text-xs uppercase tracking-[0.18em] text-zinc-500 mb-2">Acquisition desk</p>
-          <a
-            href={mailto}
-            class="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3.5 text-ink font-semibold text-sm sm:text-base hover:bg-zinc-100 active:scale-[0.985] transition"
-          >
-            Contact {SITE.acquisitionEmail}
-            <span class="transition group-hover:translate-x-0.5" aria-hidden="true">→</span>
-          </a>
-          <p class="mt-3 text-center text-xs text-zinc-500">
-            Prefer email?
-            <a class="text-zinc-300 underline underline-offset-2 hover:text-white" href={mailto}>
-              {SITE.acquisitionEmail}
-            </a>
-          </p>
-        </div>
-      </div>
-    </section>
+    <AcquireCTA />
 
     <div class="mt-12 grid gap-8 md:grid-cols-[1fr_auto] md:items-start">
       <div>
@@ -68,17 +13,17 @@ const mailto = `mailto:${SITE.acquisitionEmail}?subject=${mailSubject}&body=${ma
           selfdriving<span class="text-ember">.monster</span>
         </p>
         <p class="mt-2 max-w-xl text-sm text-zinc-500">
-          A living resource on autonomous vehicles. Technology and rules evolve quickly. Data as of{' '}
-          {SITE.dataAsOf}.
+          Pro-Tesla resource on Full Self-Driving, Cybercab, and autonomous mobility. Technology and
+          rules evolve quickly. Data as of {SITE.dataAsOf}.
         </p>
       </div>
       <nav class="flex flex-wrap gap-x-5 gap-y-2 text-sm text-zinc-400" aria-label="Footer">
-        <a href="#understanding" class="hover:text-white transition">Understanding</a>
-        <a href="#tesla" class="hover:text-white transition">Tesla</a>
-        <a href="#industrial" class="hover:text-white transition">Industrial</a>
-        <a href="#timeline" class="hover:text-white transition">Timeline</a>
-        <a href="#faq" class="hover:text-white transition">FAQ</a>
-        <a href="#acquire" class="hover:text-white transition">Acquire</a>
+        <a href="/tesla-fsd/" class="hover:text-white transition">Tesla FSD</a>
+        <a href="/cybercab/" class="hover:text-white transition">Cybercab</a>
+        <a href="/why-tesla/" class="hover:text-white transition">Why Tesla</a>
+        <a href="/#timeline" class="hover:text-white transition">Timeline</a>
+        <a href="/#faq" class="hover:text-white transition">FAQ</a>
+        <a href="/domain/" class="hover:text-white transition">Acquire</a>
       </nav>
     </div>
 
@@ -87,7 +32,8 @@ const mailto = `mailto:${SITE.acquisitionEmail}?subject=${mailSubject}&body=${ma
         This website is for demonstration and informational purposes only. It does not constitute an
         offer of services, a commitment to deploy, or a guarantee of outcomes. All statistics,
         projections, and references to specific technologies are based on publicly available information
-        as of the date shown and are subject to change.
+        as of the date shown and are subject to change. Tesla, Full Self-Driving, Cybercab, and related
+        marks are trademarks of their respective owners; this site is independent and unaffiliated.
       </p>
       <p class="text-xs text-zinc-600 leading-relaxed max-w-3xl">
         Compiled from Tesla disclosures (2026), Waymo reports, Komatsu milestones, EPA Cybercab filings,
@@ -96,7 +42,7 @@ const mailto = `mailto:${SITE.acquisitionEmail}?subject=${mailSubject}&body=${ma
       </p>
       <p class="text-xs text-zinc-600">
         © {new Date().getFullYear()} {SITE.name}. Domain inquiries:
-        <a class="text-zinc-400 hover:text-white underline underline-offset-2" href={mailto}>
+        <a class="text-zinc-400 hover:text-white underline underline-offset-2" href="/domain/">
           {SITE.acquisitionEmail}
         </a>
       </p>

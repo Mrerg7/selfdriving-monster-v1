@@ -1,22 +1,32 @@
 # selfdriving.monster
 
-Static Astro site for [selfdriving.monster](https://selfdriving.monster) — data-backed guide to autonomous vehicles, deployed on **Cloudflare Workers Static Assets** (assets-only, no Worker script / no adapter).
+Static Astro site for [selfdriving.monster](https://selfdriving.monster) — pro-Tesla guide to Full Self-Driving, Cybercab, and autonomy timelines. Deployed on **Cloudflare Workers Static Assets** with a thin Worker for canonical host redirects + security headers.
 
 ## Stack
 
-- Astro 7 (`output: 'static'`) — no `@astrojs/cloudflare` adapter
+- Astro 7 (`output: 'static'`)
 - Tailwind CSS 4 + TypeScript
 - Content Collections (FAQ, timeline, stats)
 - Cloudflare Images CDN for hero / OG
-- `@astrojs/sitemap` + `public/robots.txt`
-- Full Open Graph + JSON-LD structured data
+- `@astrojs/sitemap` + `robots.txt` + `llms.txt`
+- Open Graph + JSON-LD (WebSite, FAQ, Article, Product/Offer for domain sale)
 - Acquisition CTA → `sales@desertrich.com`
+
+## Pages
+
+| Path | Purpose |
+|------|---------|
+| `/` | Landing — SAE levels, Tesla FSD/Cybercab, industrial autonomy, timeline, FAQ |
+| `/tesla-fsd/` | FSD deep dive (SEO) |
+| `/cybercab/` | Cybercab specs & status (SEO) |
+| `/why-tesla/` | Pro-Tesla autonomy thesis (SEO) |
+| `/domain/` | Domain acquisition / conversion |
 
 ## Develop
 
 ```bash
 npm install
-npm run dev
+npm run dev -- --port 4321 --host 127.0.0.1
 ```
 
 ## Build & deploy
@@ -32,10 +42,10 @@ Or:
 npm run deploy
 ```
 
-`wrangler.toml` points `[assets].directory` at `./dist` with no `main` Worker entry — pure static hosting on the global edge.
+Pushing to `main` on GitHub triggers **Cloudflare Workers Builds** for `selfdriving-monster-v1`.
 
 ## Domain acquisition
 
-Footer CTA and nav point to:
+CTAs and `/domain/` point to:
 
 `mailto:sales@desertrich.com`

@@ -3,4 +3,23 @@ Allow: /
 Disallow: /404
 Disallow: /404.html
 
+# AI / LLM crawlers — allow indexing of public guides
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Sitemap: https://selfdriving.monster/sitemap-index.xml

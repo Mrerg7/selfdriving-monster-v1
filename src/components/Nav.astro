@@ -1,11 +1,5 @@
 ---
-const links = [
-  { href: '#understanding', label: 'Understanding' },
-  { href: '#tesla', label: 'Tesla FSD & Cybercab' },
-  { href: '#industrial', label: 'Industrial First' },
-  { href: '#timeline', label: 'The Road Ahead' },
-  { href: '#faq', label: 'FAQ' },
-];
+import { NAV_LINKS } from '../lib/site';
 ---
 
 <nav
@@ -31,10 +25,10 @@ const links = [
         </span>
       </a>
 
-      <div class="hidden md:flex items-center gap-7 text-sm font-medium">
+      <div class="hidden lg:flex items-center gap-6 text-sm font-medium">
         {
-          links.map((link) => (
-            <a href={link.href} class="text-zinc-400 hover:text-white transition-colors">
+          NAV_LINKS.map((link) => (
+            <a href={link.href} class="text-zinc-400 hover:text-white transition-colors whitespace-nowrap">
               {link.label}
             </a>
           ))
@@ -43,15 +37,15 @@ const links = [
 
       <div class="flex items-center gap-2 sm:gap-3">
         <a
-          href="#acquire"
-          class="hidden sm:inline-flex items-center px-4 py-2 rounded-xl text-sm font-semibold bg-white text-ink hover:bg-zinc-100 transition active:scale-[0.985]"
+          href="/domain/"
+          class="hidden sm:inline-flex items-center min-h-10 px-4 py-2 rounded-xl text-sm font-semibold bg-white text-ink hover:bg-zinc-100 transition active:scale-[0.985]"
         >
           Acquire domain
         </a>
         <button
           id="mobile-menu-btn"
           type="button"
-          class="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 text-zinc-300 hover:text-white hover:bg-white/5"
+          class="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/15 text-zinc-300 hover:text-white hover:bg-white/5"
           aria-expanded="false"
           aria-controls="mobile-menu"
           aria-label="Open menu"
@@ -64,21 +58,21 @@ const links = [
     </div>
   </div>
 
-  <div id="mobile-menu" class="hidden md:hidden border-t border-white/10 bg-ink/98" hidden>
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-white/10 bg-ink/98" hidden>
     <div class="mx-auto max-w-screen-2xl px-4 py-4 flex flex-col gap-1">
       {
-        links.map((link) => (
+        NAV_LINKS.map((link) => (
           <a
             href={link.href}
-            class="mobile-link rounded-xl px-3 py-3 text-base text-zinc-200 hover:bg-white/5"
+            class="mobile-link rounded-xl px-3 py-3.5 text-base text-zinc-200 hover:bg-white/5"
           >
             {link.label}
           </a>
         ))
       }
       <a
-        href="#acquire"
-        class="mobile-link mt-2 rounded-xl px-3 py-3 text-center font-semibold bg-white text-ink"
+        href="/domain/"
+        class="mobile-link mt-2 rounded-xl px-3 py-3.5 text-center font-semibold bg-white text-ink"
       >
         Acquire domain
       </a>

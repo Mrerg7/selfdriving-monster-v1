@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AcquireCTA from '../../components/AcquireCTA.astro';
+import StickyMobileCTA from '../../components/StickyMobileCTA.astro';
+import { SITE, FAVICON_IMAGE } from '../../lib/site';
+
+const title = 'Tesla FSD Explained — Full Self-Driving Guide | selfdriving.monster';
+const description =
+  'Pro-Tesla guide to Full Self-Driving (Supervised): v14 neural nets, HW3 vs HW4, safety stats, unsupervised roadmap, and how FSD powers the Cybercab robotaxi fleet. Data as of September 2026.';
+const canonical = `${SITE.url}tesla-fsd/`;
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'Tesla Full Self-Driving (FSD) Explained',
+  description,
+  url: canonical,
+  dateModified: SITE.dateModified,
+  datePublished: '2026-07-08',
+  author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE.name,
+    logo: { '@type': 'ImageObject', url: FAVICON_IMAGE },
+  },
+  mainEntityOfPage: canonical,
+  keywords: 'Tesla FSD, Full Self-Driving, HW4, v14, unsupervised FSD, robotaxi',
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Tesla FSD', item: canonical },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} type="article" jsonLd={[articleSchema, breadcrumbSchema]}>
+  <Nav />
+  <main id="main" class="pt-24 sm:pt-28 pb-16">
+    <article class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Tesla FSD' }]} />
+
+      <p class="uppercase tracking-[0.2em] text-xs text-ember font-semibold mb-3">Tesla · Autonomy</p>
+      <h1 class="font-display text-4xl sm:text-5xl font-bold tracking-tighter leading-[1.05]">
+        Tesla Full Self-Driving, explained for people who want the real story
+      </h1>
+      <p class="mt-4 text-lg text-zinc-400 leading-relaxed">
+        FSD is Tesla’s end-to-end neural net driving stack — trained on the largest real-world video fleet
+        on Earth. Still supervised for consumers today. The same software path powers robotaxi ops and
+        Cybercab. Data as of {SITE.dataAsOf}.
+      </p>
+
+      <div class="prose-monster mt-10 space-y-8 text-[15px] sm:text-base text-zinc-300 leading-relaxed">
+        <section>
+          <h2 class="font-display text-2xl tracking-tight text-white mb-3">What FSD is (and isn’t)</h2>
+          <p>
+            Full Self-Driving (Supervised) is SAE Level 2: the car steers, accelerates, and brakes, and
+            the human must remain attentive. That label matters for regulators — and it undersells how far
+            the neural net has come. City streets, unprotected lefts, roundabouts, and highway merges are
+            handled by a single vision model that keeps getting better with every release.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl tracking-tight text-white mb-3">Why the data flywheel matters</h2>
+          <p>
+            Tesla has logged <strong class="text-white">13+ billion kilometers</strong> of FSD Supervised
+            driving. Every intervention, every edge case, every weird intersection feeds the training loop.
+            Competitors running lidar in a handful of cities cannot match that volume. Scale is the strategy —
+            and Tesla owns the scale.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl tracking-tight text-white mb-3">Hardware: HW3, HW4, and AI chips</h2>
+          <ul class="space-y-3 list-none pl-0">
+            <li class="flex gap-3"><span class="text-pulse" aria-hidden="true">✓</span><span><strong class="text-white">HW3 / AI3</strong> — receiving v14 Lite; still in the improvement path.</span></li>
+            <li class="flex gap-3"><span class="text-pulse" aria-hidden="true">✓</span><span><strong class="text-white">HW4 / AI4</strong> — full v14 feature set with stronger perception and planning.</span></li>
+            <li class="flex gap-3"><span class="text-pulse" aria-hidden="true">✓</span><span><strong class="text-white">Unsupervised target</strong> — gradual rollout aimed at late 2026+, gated by safety validation.</span></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl tracking-tight text-white mb-3">From supervised FSD to robotaxi</h2>
+          <p>
+            Tesla Robotaxi already operates with Model Y vehicles in Austin, Dallas, Houston, and Miami.
+            Cybercab removes the steering wheel entirely — purpose-built for unsupervised miles at lower
+            cost. Same neural net philosophy. Bigger economic upside.
+          </p>
+          <p class="mt-4">
+            Dig deeper:
+            <a class="text-signal hover:text-white underline underline-offset-2" href="/cybercab/">Cybercab specs &amp; status</a>
+            ·
+            <a class="text-signal hover:text-white underline underline-offset-2" href="/why-tesla/">Why Tesla’s approach wins</a>
+            ·
+            <a class="text-signal hover:text-white underline underline-offset-2" href="/#faq">FAQ</a>
+          </p>
+        </section>
+      </div>
+    </article>
+
+    <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8 mt-14">
+      <AcquireCTA id="acquire" />
+    </div>
+  </main>
+  <Footer />
+  <StickyMobileCTA />
+</BaseLayout>

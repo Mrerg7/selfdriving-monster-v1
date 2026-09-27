@@ -1,0 +1,18 @@
+{
+  "name": "selfdriving.monster",
+  "short_name": "selfdriving",
+  "description": "Pro-Tesla guide to Full Self-Driving, Cybercab, and the robotaxi future.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07080c",
+  "theme_color": "#07080c",
+  "lang": "en-US",
+  "icons": [
+    {
+      "src": "https://imagedelivery.net/-sPAUAWeA405NiWJ0SNIQA/20aae291-1f97-4771-466d-a237f15cd600/public",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

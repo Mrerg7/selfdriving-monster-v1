@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import StickyMobileCTA from '../../components/StickyMobileCTA.astro';
+import { SITE, mailtoAcquire, OG_IMAGE } from '../../lib/site';
+
+const title = 'Buy selfdriving.monster — Premium Domain for Sale';
+const description =
+  'Acquire selfdriving.monster — a category-defining domain for Tesla autonomy, robotaxi media, FSD coverage, and mobility brands. Direct sale via sales@desertrich.com.';
+const canonical = `${SITE.url}domain/`;
+const mailto = mailtoAcquire();
+
+const orgId = `${SITE.url}#organization`;
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'selfdriving.monster domain name',
+  description,
+  url: canonical,
+  image: OG_IMAGE,
+  brand: { '@type': 'Brand', name: SITE.name },
+  category: 'Domain name',
+  offers: {
+    '@type': 'Offer',
+    url: canonical,
+    availability: 'https://schema.org/InStock',
+    priceCurrency: 'USD',
+    seller: {
+      '@type': 'Organization',
+      '@id': orgId,
+      name: SITE.name,
+      email: SITE.acquisitionEmail,
+      url: SITE.url,
+    },
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
+    { '@type': 'ListItem', position: 2, name: 'Domain for sale', item: canonical },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} jsonLd={[productSchema, breadcrumbSchema]}>
+  <Nav />
+  <main id="main" class="pt-24 sm:pt-28 pb-20">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Domain for sale' }]} />
+
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-zinc-400">
+        Premium domain · Available now
+      </p>
+      <h1 class="mt-3 font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tighter leading-[0.95]">
+        selfdriving<span class="text-ember">.monster</span>
+      </h1>
+      <p class="mt-5 text-lg text-zinc-300 leading-relaxed max-w-xl">
+        Own the exact phrase people use for the autonomy era. Built as a live, pro-Tesla content property —
+        ready for a media brand, mobility platform, or investor thesis site.
+      </p>
+
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href={mailto}
+          class="inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-white px-7 text-ink font-semibold text-sm sm:text-base hover:bg-zinc-100 active:scale-[0.985] transition"
+        >
+          Email {SITE.acquisitionEmail}
+          <span aria-hidden="true">→</span>
+        </a>
+        <a
+          href="/"
+          class="inline-flex min-h-12 items-center justify-center rounded-2xl border border-white/20 px-6 font-semibold text-sm sm:text-base hover:bg-white/5 transition"
+        >
+          View live site
+        </a>
+      </div>
+
+      <ul class="mt-12 grid sm:grid-cols-2 gap-4 text-sm">
+        {
+          [
+            ['Exact-match keyword', '“self driving” + memorable .monster TLD'],
+            ['Live SEO foundation', 'Guides, FAQ schema, sitemap, canonicals'],
+            ['Pro-Tesla positioning', 'FSD, Cybercab, and robotaxi topical authority'],
+            ['Direct acquisition', 'No marketplace middlemen — serious buyers only'],
+          ].map(([titleText, body]) => (
+            <li class="rounded-2xl border border-white/10 bg-ink-soft p-5">
+              <div class="font-semibold text-white">{titleText}</div>
+              <div class="mt-1.5 text-zinc-400 text-[13px] leading-relaxed">{body}</div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-12 rounded-3xl border border-white/12 cta-acquire p-6 sm:p-8">
+        <h2 class="font-display text-2xl tracking-tighter">Ready to acquire?</h2>
+        <p class="mt-2 text-sm text-zinc-300 max-w-lg">
+          Send a short note with your intended use and timeline. We respond to qualified inquiries.
+        </p>
+        <a
+          href={mailto}
+          class="mt-6 inline-flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-white px-6 text-ink font-semibold text-sm hover:bg-zinc-100 transition"
+        >
+          Contact acquisition desk
+          <span aria-hidden="true">→</span>
+        </a>
+        <p class="mt-3 text-xs text-zinc-500">{SITE.acquisitionEmail}</p>
+      </div>
+    </div>
+  </main>
+  <Footer />
+  <StickyMobileCTA />
+</BaseLayout>

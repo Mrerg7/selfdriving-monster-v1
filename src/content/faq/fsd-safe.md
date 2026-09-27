@@ -3,4 +3,4 @@ question: "Is Tesla FSD safe today?"
 order: 1
 ---
 
-Significantly improved with v12–v14 neural nets. Strong aggregate stats reported, but incidents occur and attract scrutiny. Still Level 2 — driver is responsible. Excellent co-pilot; not set-and-forget.
+Significantly improved with end-to-end neural nets (v12–v14). Tesla reports strong aggregate safety stats as the fleet learns from billions of real-world miles. Still Level 2 today — the driver remains responsible — and it is already one of the most capable consumer co-pilots on the road, with unsupervised robotaxi ops expanding city by city.
